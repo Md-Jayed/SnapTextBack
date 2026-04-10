@@ -193,7 +193,7 @@ export default function App() {
                             Get Demo Instructions <ArrowRight className="ml-2 h-5 w-5" />
                           </Button>
                           <p className="text-center text-xs text-slate-400">
-                            By submitting this form, you agree to receive email communication from SnapTextBack. You can unsubscribe at any time.
+                            By submitting this form, you agree to receive email communications from SnapTextBack. You can unsubscribe at any time. SMS messages are only sent if you voluntarily call our demo number. Mobile opt-in data is never shared with third parties. Reply STOP to opt out. Reply HELP for help. Msg & data rates may apply.
                           </p>
                         </motion.form>
                       ) : (
@@ -458,14 +458,26 @@ export default function App() {
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                    <PhoneCall className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-slate-400">Phone</p>
+                    <p className="font-bold">248-216-8175</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-4">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
                     <ShieldCheck className="h-5 w-5" />
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-slate-400">Location</p>
-                    <p className="font-bold">Austin, Texas</p>
+                    <p className="font-bold">Davisburg, MI</p>
                   </div>
                 </div>
               </div>
+              <p className="mt-8 text-xs text-slate-500">
+                SMS opt-in data will not be shared with any third party.
+              </p>
             </div>
           </div>
         </section>
