@@ -13,7 +13,8 @@ import {
   X,
   PhoneForwarded,
   Clock,
-  Zap
+  Zap,
+  Loader2
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,14 +26,29 @@ const DEMO_NUMBER = "248-216-8175";
 
 export default function Home() {
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "" });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (formData.name && formData.email) {
-      setIsSubmitted(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (formData.name && formData.email && formData.phone) {
+      setIsSubmitting(true);
+      try {
+        await fetch("https://services.leadconnectorhq.com/hooks/NiMrb2ERF3DdUkPqwW3N/webhook-trigger/ae4b36d1-90f8-4caa-8322-a4ced15608af", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        setIsSubmitted(true);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } catch (error) {
+        console.error("Error submitting form:", error);
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -167,19 +183,35 @@ export default function Home() {
                             />
                           </div>
                           <div className="space-y-2">
-                            <Label htmlFor="email">Work Email</Label>
+                            <Label htmlFor="email">Email</Label>
                             <Input 
                               id="email" 
                               type="email" 
-                              placeholder="john@towingcompany.com" 
+                              placeholder="john@example.com" 
                               required 
                               value={formData.email}
                               onChange={(e) => setFormData({...formData, email: e.target.value})}
                               className="h-12"
                             />
                           </div>
-                          <Button type="submit" className="h-12 w-full bg-blue-600 text-lg font-semibold hover:bg-blue-700">
-                            Get Demo Instructions <ArrowRight className="ml-2 h-5 w-5" />
+                          <div className="space-y-2">
+                            <Label htmlFor="phone">Phone Number</Label>
+                            <Input 
+                              id="phone" 
+                              type="tel" 
+                              placeholder="(555) 000-0000" 
+                              required 
+                              value={formData.phone}
+                              onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                              className="h-12"
+                            />
+                          </div>
+                          <Button type="submit" disabled={isSubmitting} className="h-12 w-full bg-blue-600 text-lg font-semibold hover:bg-blue-700">
+                            {isSubmitting ? (
+                              <Loader2 className="h-5 w-5 animate-spin" />
+                            ) : (
+                              <>Get Demo Instructions <ArrowRight className="ml-2 h-5 w-5" /></>
+                            )}
                           </Button>
                           <p className="text-center text-xs text-slate-400">
                             By submitting this form, you agree to receive email communications from SnapTextBack. You can unsubscribe at any time. SMS messages are only sent if you voluntarily call our demo number. Mobile opt-in data is never shared with third parties. Reply STOP to opt out. Reply HELP for help. Msg & data rates may apply.
