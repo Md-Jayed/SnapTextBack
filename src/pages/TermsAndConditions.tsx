@@ -53,57 +53,51 @@ export default function TermsAndConditions() {
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">4. Demo Use Disclosure</h2>
-              <p>The SMS functionality available through this website is for demonstration purposes only. Messages are only sent when a user voluntarily calls the demo phone number to initiate the experience. SnapTextBack does not send unsolicited or cold outreach messages through this demo system.</p>
-            </section>
-
-            <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">5. SMS Communication Consent</h2>
-              <p className="mb-4">SMS messages are only sent when you voluntarily call our demo phone number after submitting the demo request form. By making that call, you consent to receive an initial automated SMS from SnapTextBack.</p>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">4. SMS Communication Consent</h2>
+              <p className="mb-4">SMS messages are only sent when you voluntarily call our demo phone number. By making that call, you consent to receive an initial automated SMS from SnapTextBack.</p>
               <p className="mb-4">Continued participation in the SMS demo requires you to reply YES to the first message. This reply constitutes your express written consent to receive further automated SMS messages in the demo sequence.</p>
               <p className="mb-4">Message frequency varies depending on your responses. Message and data rates may apply. You may opt out at any time by replying STOP. Reply HELP for support.</p>
               <p className="font-bold text-slate-900">Mobile telephone numbers and SMS opt-in consent are never sold, shared, or transferred to third parties.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">6. Prohibited Use</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">5. Prohibited Use</h2>
               <p>You agree not to use this website or service to: violate any applicable law or regulation, transmit spam or unsolicited messages, impersonate any person or entity, or interfere with the operation of our systems.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">7. Intellectual Property</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">6. Intellectual Property</h2>
               <p>All content on this website including text, graphics, and the SnapTextBack name and logo are the property of SNK LTD LLC and may not be reproduced without written permission.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">8. Disclaimer of Warranties</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">7. Disclaimer of Warranties</h2>
               <p>SnapTextBack services are provided "as is" without warranties of any kind. We do not guarantee specific business outcomes, revenue increases, or uninterrupted service availability.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">9. Limitation of Liability</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">8. Limitation of Liability</h2>
               <p>To the fullest extent permitted by law, SNK LTD LLC shall not be liable for any indirect, incidental, or consequential damages arising from your use of or inability to use our services, including any missed business opportunities or failures of SMS or telephony networks.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">10. Indemnification</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">9. Indemnification</h2>
               <p>You agree to indemnify and hold harmless SNK LTD LLC, its officers, employees, and agents from any claims, damages, or expenses arising from your use of our services or your violation of these terms.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">11. Governing Law</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">10. Governing Law</h2>
               <p>These terms are governed by the laws of the State of Michigan. Any disputes shall be resolved in the courts of Wayne County, Michigan.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">12. Changes to Terms</h2>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">11. Changes to Terms</h2>
               <p>We reserve the right to update these terms at any time. Continued use of the site after changes constitutes acceptance of the updated terms.</p>
             </section>
 
             <section>
-              <h2 className="mb-4 text-xl font-bold text-slate-900">13. Contact</h2>
-              <p>SnapTextBack Solutions — SNK LTD LLC</p>
-              <p>Email: hello@snaptextback.com</p>
+              <h2 className="mb-4 text-xl font-bold text-slate-900">12. Contact</h2>
+              <p>SnapTextBack Solutions — SNK LTD LLC Email: hello@snaptextback.com</p>
             </section>
           </div>
         </motion.div>

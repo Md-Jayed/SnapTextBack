@@ -519,9 +519,14 @@ export default function Home() {
               <button onClick={() => scrollToSection('contact')} className="hover:text-blue-600">Contact</button>
             </div>
 
-            <p className="text-sm text-slate-400 text-center md:text-right">
-              © 2026 SnapTextBack Solutions. A brand of SNK LTD LLC. All rights reserved.
-            </p>
+            <div className="flex flex-col gap-4 text-center md:text-right">
+              <p className="text-xs text-slate-400 max-w-md mx-auto md:ml-auto">
+                The SnapTextBack demo is activated only when a user calls the demo number. Submitting this form is for general inquiries and does not trigger SMS demo messages.
+              </p>
+              <p className="text-sm text-slate-400">
+                © 2026 SnapTextBack Solutions. A brand of SNK LTD LLC. All rights reserved.
+              </p>
+            </div>
           </div>
         </div>
       </footer>
