@@ -1,4 +1,4 @@
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { 
   PhoneCall, 
@@ -13,44 +13,16 @@ import {
   X,
   PhoneForwarded,
   Clock,
-  Zap,
-  Loader2
+  Zap
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Link } from "react-router-dom";
 
 const DEMO_NUMBER = "248-216-8175";
 
 export default function Home() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [formData, setFormData] = useState({ name: "", email: "", phone: "" });
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    if (formData.name && formData.email && formData.phone) {
-      setIsSubmitting(true);
-      try {
-        await fetch("https://services.leadconnectorhq.com/hooks/NiMrb2ERF3DdUkPqwW3N/webhook-trigger/ae4b36d1-90f8-4caa-8322-a4ced15608af", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        setIsSubmitted(true);
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } catch (error) {
-        console.error("Error submitting form:", error);
-      } finally {
-        setIsSubmitting(false);
-      }
-    }
-  };
 
   const scrollToSection = (id: string) => {
     const element = document.getElementById(id);
@@ -157,109 +129,45 @@ export default function Home() {
                 <div className="absolute -inset-4 rounded-3xl bg-blue-600/5 blur-2xl" />
                 <Card className="relative border-slate-200 shadow-2xl shadow-blue-100">
                   <CardHeader className="space-y-1">
-                    <CardTitle className="text-2xl font-bold">Experience the Demo</CardTitle>
-                    <CardDescription>Enter your details to see how it works in real-time.</CardDescription>
+                    <CardTitle className="text-2xl font-bold text-blue-600">Experience the Live Demo</CardTitle>
+                    <CardDescription>Follow these simple steps to see the technology in action.</CardDescription>
                   </CardHeader>
                   <CardContent>
-                    <AnimatePresence mode="wait">
-                      {!isSubmitted ? (
-                        <motion.form
-                          key="form"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                          onSubmit={handleSubmit}
-                          className="space-y-4"
-                        >
-                          <div className="space-y-2">
-                            <Label htmlFor="name">Full Name</Label>
-                            <Input 
-                              id="name" 
-                              placeholder="John Doe" 
-                              required 
-                              value={formData.name}
-                              onChange={(e) => setFormData({...formData, name: e.target.value})}
-                              className="h-12"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="email">Email</Label>
-                            <Input 
-                              id="email" 
-                              type="email" 
-                              placeholder="john@example.com" 
-                              required 
-                              value={formData.email}
-                              onChange={(e) => setFormData({...formData, email: e.target.value})}
-                              className="h-12"
-                            />
-                          </div>
-                          <div className="space-y-2">
-                            <Label htmlFor="phone">Phone Number</Label>
-                            <Input 
-                              id="phone" 
-                              type="tel" 
-                              placeholder="(555) 000-0000" 
-                              required 
-                              value={formData.phone}
-                              onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                              className="h-12"
-                            />
-                          </div>
-                          <Button type="submit" disabled={isSubmitting} className="h-12 w-full bg-blue-600 text-lg font-semibold hover:bg-blue-700">
-                            {isSubmitting ? (
-                              <Loader2 className="h-5 w-5 animate-spin" />
-                            ) : (
-                              <>Get Demo Instructions <ArrowRight className="ml-2 h-5 w-5" /></>
-                            )}
-                          </Button>
-                          <p className="text-center text-xs text-slate-400">
-                            By submitting this form, you agree to receive email communications from SnapTextBack. You can unsubscribe at any time. SMS messages are only sent if you voluntarily call our demo number. Mobile opt-in data is never shared with third parties. Reply STOP to opt out. Reply HELP for help. Msg & data rates may apply.
-                          </p>
-                        </motion.form>
-                      ) : (
-                        <motion.div
-                          key="success"
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="space-y-6 py-4 text-center"
-                        >
-                          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 text-green-600">
-                            <PhoneCall className="h-8 w-8" />
-                          </div>
-                          <div className="space-y-2">
-                            <h3 className="text-2xl font-bold text-slate-900">Ready for the Demo?</h3>
-                            <p className="text-slate-600">Call our demo number below to experience the instant text-back system.</p>
-                          </div>
-                          
-                          <div className="rounded-2xl bg-slate-50 p-6">
-                            <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-400">Call Now</p>
-                            <a href={`tel:${DEMO_NUMBER}`} className="text-3xl font-bold text-blue-600 hover:underline">
-                              {DEMO_NUMBER}
-                            </a>
-                          </div>
+                    <div className="space-y-6 py-4 text-center">
+                      <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+                        <PhoneCall className="h-8 w-8" />
+                      </div>
+                      <div className="space-y-2">
+                        <h3 className="text-2xl font-bold text-slate-900">Ready for the Demo?</h3>
+                        <p className="text-slate-600">Call our demo number below to experience the instant text-back system.</p>
+                      </div>
+                      
+                      <div className="rounded-2xl bg-slate-50 p-6 border border-slate-100">
+                        <p className="mb-2 text-sm font-semibold uppercase tracking-wider text-slate-400">Demo Number</p>
+                        <a href={`tel:${DEMO_NUMBER}`} className="text-3xl font-bold text-blue-600 hover:underline">
+                          {DEMO_NUMBER}
+                        </a>
+                      </div>
 
-                          <div className="space-y-4 text-left text-sm text-slate-600">
-                            <div className="flex gap-3">
-                              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">1</div>
-                              <p>Call the number and let it ring (or hang up).</p>
-                            </div>
-                            <div className="flex gap-3">
-                              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">2</div>
-                              <p>You'll receive an instant text message.</p>
-                            </div>
-                            <div className="flex gap-3">
-                              <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">3</div>
-                              <p>Reply <span className="font-bold text-slate-900">YES</span> to opt-in to the demo flow.</p>
-                            </div>
-                          </div>
+                      <div className="space-y-4 text-left text-sm text-slate-600">
+                        <div className="flex gap-3">
+                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">1</div>
+                          <p>Call the number and let it ring (or hang up).</p>
+                        </div>
+                        <div className="flex gap-3">
+                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">2</div>
+                          <p>You'll receive an instant text message.</p>
+                        </div>
+                        <div className="flex gap-3">
+                          <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-blue-600 text-[10px] font-bold text-white">3</div>
+                          <p>Reply <span className="font-bold text-slate-900">YES</span> to opt-in to the demo flow.</p>
+                        </div>
+                      </div>
 
-                          <div className="pt-4 text-[10px] leading-relaxed text-slate-400">
-                            Reply STOP to unsubscribe. Reply HELP for help. Message and data rates may apply. SMS opt-in explanation happens AFTER call.
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+                      <div className="pt-4 text-[10px] leading-relaxed text-slate-400 border-t border-slate-100">
+                        Reply STOP to unsubscribe. Reply HELP for help. Message and data rates may apply. SMS opt-in happens after the initial call.
+                      </div>
+                    </div>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -450,55 +358,85 @@ export default function Home() {
         </section>
 
         {/* Closing Section */}
-        <section id="contact" className="px-4 py-24 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-3xl text-center">
-            <h2 className="mb-6 text-3xl font-bold text-slate-900">Stop Losing Money to Missed Calls.</h2>
-            <p className="mb-12 text-lg text-slate-600">
-              Every minute you wait is another customer calling your competitor. Join hundreds of local businesses using SnapTextBack to grow their revenue.
-            </p>
-            <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 text-left">
-              <h3 className="mb-6 text-xl font-bold">Contact Us</h3>
-              <div className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <Users className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Business Name</p>
-                    <p className="font-bold">SnapTextBack Solutions — SNK LTD LLC</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <MessageSquare className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Email</p>
-                    <p className="font-bold">hello@snaptextback.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <PhoneCall className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Phone</p>
-                    <p className="font-bold">248-216-8175</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-4">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-100 text-blue-600">
-                    <ShieldCheck className="h-5 w-5" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold text-slate-400">Location</p>
-                    <p className="font-bold">Davisburg, MI</p>
+        <section id="contact" className="px-4 py-24 sm:px-6 lg:px-8 bg-slate-50 border-y border-slate-200">
+          <div className="mx-auto max-w-7xl">
+            <div className="mb-16 text-center">
+              <h2 className="mb-4 text-4xl font-bold text-slate-900">Get in Touch</h2>
+              <p className="text-xl text-slate-600 mx-auto max-w-3xl">
+                Have questions about how SnapTextBack can help your business grow? We're here to help you stop losing money to missed calls.
+              </p>
+            </div>
+            
+            <div className="grid gap-12 lg:grid-cols-3">
+              <div className="lg:col-span-2 space-y-8">
+                <div className="rounded-3xl border border-slate-200 bg-white p-10 shadow-sm">
+                  <h3 className="mb-10 text-2xl font-bold">Contact Details</h3>
+                  <div className="grid gap-8 md:grid-cols-2">
+                    <div className="flex items-center gap-5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                        <Users className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Business Name</p>
+                        <p className="font-bold text-xl">SnapTextBack Solutions</p>
+                        <p className="text-slate-500 font-medium">SNK LTD LLC</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                        <MessageSquare className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Email</p>
+                        <a href="mailto:hello@snaptextback.com" className="font-bold text-xl hover:text-blue-600 transition-colors">hello@snaptextback.com</a>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                        <PhoneCall className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Phone</p>
+                        <a href="tel:2482168175" className="font-bold text-xl hover:text-blue-600 transition-colors">248-216-8175</a>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-5">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600">
+                        <ShieldCheck className="h-7 w-7" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Location</p>
+                        <p className="font-bold text-xl">Davisburg, MI</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <p className="mt-8 text-xs text-slate-500">
-                SMS opt-in data will not be shared with any third party.
-              </p>
+
+              <div className="space-y-6">
+                <div className="rounded-3xl bg-blue-600 p-8 text-white shadow-xl shadow-blue-200">
+                  <h4 className="text-xl font-bold mb-4">A2P 10DLC Verified</h4>
+                  <p className="text-blue-100 leading-relaxed mb-6">
+                    We are fully compliant with all mobile carrier regulations. Your customer's data is handled with the highest standards of security and privacy.
+                  </p>
+                  <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-white/10">
+                    <ShieldCheck className="h-6 w-6" />
+                  </div>
+                </div>
+
+                <div className="rounded-3xl bg-slate-900 p-8 text-white shadow-xl">
+                  <h4 className="text-xl font-bold mb-4">Ready to Start?</h4>
+                  <p className="text-slate-400 leading-relaxed mb-8">
+                    Join hundreds of local businesses using SnapTextBack to grow their revenue and improve customer satisfaction.
+                  </p>
+                  <Button 
+                    onClick={() => scrollToSection('hero')}
+                    className="w-full bg-blue-600 hover:bg-blue-700"
+                  >
+                    Try the Demo <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -521,7 +459,7 @@ export default function Home() {
 
             <div className="flex flex-col gap-4 text-center md:text-right">
               <p className="text-xs text-slate-400 max-w-md mx-auto md:ml-auto">
-                The SnapTextBack demo is activated only when a user calls the demo number. Submitting this form is for general inquiries and does not trigger SMS demo messages.
+                The SnapTextBack demo is activated only when a user calls the demo number. We do not trigger unsolicited SMS demo messages.
               </p>
               <p className="text-sm text-slate-400">
                 © 2026 SnapTextBack Solutions. A brand of SNK LTD LLC. All rights reserved.
