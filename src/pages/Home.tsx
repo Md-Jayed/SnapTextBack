@@ -105,20 +105,7 @@ export default function Home() {
                 Instantly text back every missed call. Keep your customers engaged while you're busy, and close more deals without lifting a finger.
               </p>
               
-              <div className="flex flex-wrap justify-center gap-6">
-                <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                  <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  No Setup Fees
-                </div>
-                <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                  <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  Instant Activation
-                </div>
-                <div className="flex items-center gap-2 text-sm font-medium text-slate-500">
-                  <CheckCircle2 className="h-5 w-5 text-green-500" />
-                  Cancel Anytime
-                </div>
-              </div>
+              
             </motion.div>
           </div>
         </section>
