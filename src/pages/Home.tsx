@@ -51,7 +51,14 @@ export default function Home() {
               <button onClick={() => scrollToSection('how-it-works')} className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600">How It Works</button>
               <button onClick={() => scrollToSection('who-its-for')} className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600">Who It's For</button>
               <button onClick={() => scrollToSection('contact')} className="text-sm font-medium text-slate-600 transition-colors hover:text-blue-600">Contact</button>
-              <Button onClick={() => scrollToSection('contact')} className="bg-blue-600 hover:bg-blue-700">Get Started</Button>
+              <a 
+                href="https://app.snaptextback.com/demo" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex h-9 items-center justify-center rounded-lg bg-blue-600 px-4 text-sm font-medium text-white transition-all hover:bg-blue-700 active:translate-y-px shrink-0 shadow-sm"
+              >
+                See Demo
+              </a>
             </div>
 
           {/* Mobile Menu Toggle */}
@@ -73,7 +80,14 @@ export default function Home() {
                   <button onClick={() => scrollToSection('how-it-works')} className="text-left text-lg font-medium">How It Works</button>
                   <button onClick={() => scrollToSection('who-its-for')} className="text-left text-lg font-medium">Who It's For</button>
                   <button onClick={() => scrollToSection('contact')} className="text-left text-lg font-medium">Contact</button>
-                  <Button onClick={() => scrollToSection('contact')} className="w-full bg-blue-600">Get Started</Button>
+                  <a 
+                    href="https://app.snaptextback.com/demo" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="inline-flex h-10 items-center justify-center rounded-lg bg-blue-600 px-4 text-base font-medium text-white transition-all hover:bg-blue-700 active:translate-y-px w-full text-center shadow-sm"
+                  >
+                    See Demo
+                  </a>
                 </div>
             </motion.div>
           )}
@@ -240,6 +254,49 @@ export default function Home() {
                   <p className="text-slate-400">{step.desc}</p>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-16 flex justify-center">
+              <a 
+                href="https://app.snaptextback.com/demo" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex h-12 items-center justify-center rounded-lg bg-blue-600 px-8 text-base font-semibold text-white shadow-lg shadow-blue-900/30 transition-all hover:bg-blue-700 active:translate-y-px gap-2"
+              >
+                See Demo <ArrowRight className="h-5 w-5" />
+              </a>
+            </div>
+          </div>
+        </section>
+
+        {/* Mid-Page Contact Section */}
+        <section className="bg-blue-50/50 px-4 py-20 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-4xl text-center">
+            <h2 className="mb-4 text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">Have Questions? Get in Touch</h2>
+            <p className="mb-12 text-lg text-slate-600">
+              Our team is ready to help you set up SnapTextBack and answer any technical or business questions you may have.
+            </p>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="rounded-2xl border border-blue-100 bg-white p-8 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                  <PhoneCall className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-slate-950 font-bold text-lg">Call Us</h3>
+                <p className="mb-4 text-sm text-slate-500">Speak directly to an agent</p>
+                <a href={`tel:${DEMO_NUMBER}`} className="text-xl font-bold text-blue-600 hover:underline">
+                  {DEMO_NUMBER}
+                </a>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-8 text-center shadow-sm">
+                <div className="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-100 text-blue-600">
+                  <MessageSquare className="h-6 w-6" />
+                </div>
+                <h3 className="mb-2 text-slate-950 font-bold text-lg">Email Us</h3>
+                <p className="mb-4 text-sm text-slate-500">We respond within 24 business hours</p>
+                <a href="mailto:hello@snaptextback.com" className="text-xl font-bold text-blue-600 hover:underline">
+                  hello@snaptextback.com
+                </a>
+              </div>
             </div>
           </div>
         </section>
